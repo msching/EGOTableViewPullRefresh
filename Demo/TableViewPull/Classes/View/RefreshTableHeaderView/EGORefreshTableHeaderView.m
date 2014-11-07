@@ -221,10 +221,16 @@
 			[_delegate egoRefreshTableHeaderDidTriggerRefresh:self];
 		}
 		
+        CGPoint contentOffset = scrollView.contentOffset;
 		[self setState:EGOOPullRefreshLoading];
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.2];
 		scrollView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] > 8) {
+            //fix weired animation for iOS 8
+            //from: http://stackoverflow.com/a/26320256
+            scrollView.contentOffset = contentOffset;
+        }
 		[UIView commitAnimations];
 		
 	}
