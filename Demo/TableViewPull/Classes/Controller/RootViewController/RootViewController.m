@@ -79,7 +79,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	
-	return [NSString stringWithFormat:@"Section %i", section];
+	return [NSString stringWithFormat:@"Section %li", (long)section];
 	
 }
 
